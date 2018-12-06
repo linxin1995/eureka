@@ -1,0 +1,13 @@
+eureka:
+  client:
+    register-with-eureka: false
+    serviceUrl:
+      defaltZone: http://106.13.37.124:8000/eureka/
+  instance:
+    hostname: my_eureka
+spring:
+  profiles:
+    active: development
+
+
+    
