@@ -1,14 +1,14 @@
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registery: false
-    serviceUrl:
-      defaltZone: http://106.13.37.124:8000/eureka/
-  instance:
-    hostname: my_eureka
+#eureka:
+#  client:
+#    register-with-eureka: false
+#  serviceUrl:
+#    defaltZone: http://localhost:8000/eureka/
 spring:
   profiles:
     active: development
+eureka.client.register-with-eureka: false
+eureka.client.fetch-registry: false
 
 
-    
+
+
