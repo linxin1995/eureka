@@ -14,3 +14,5 @@ eureka:
   server:
     enable-self-preservation: false  #自我保护，会导致服务不会及时剔除
     eviction-interval-timer-in-ms: 4000 #清理间隔
+  instance:
+    hostname: 106.13.34.124
