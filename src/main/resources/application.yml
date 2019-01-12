@@ -1,8 +1,9 @@
-#eureka:
-#  client:
-#    register-with-eureka: false
-#  serviceUrl:
-#    defaltZone: http://localhost:8000/eureka/
+logging:
+  file: ${user.dir}/logs/eureka.log
+  level:
+    org.springframework:
+      data: DEBUG
+      security: DEBUG
 spring:
   profiles:
     active: test
