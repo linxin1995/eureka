@@ -1,24 +1,66 @@
-logging:
-  file: ${user.dir}/logs/eureka.log
-  level:
-    org.springframework:
-      data: DEBUG
-      security: DEBUG
-spring:
-  profiles:
-    active: test
-  security:
-    user:
-      name: linxin
-      password: 123456
-eureka.client.register-with-eureka: false
-eureka.client.fetch-registry: false
-eureka.client.serviceUrl.defaltZone: http://106.13.37.124:8000/eureka/
+#logging:
+#  file: ${user.dir}/logs/eureka.log
+#  level:
+#    org.springframework:
+#      data: DEBUG
+#      security: DEBUG
+#spring:
+#  security:
+#    user:
+#      name: linxin
+#      password: 123456
 
+#eureka.client.register-with-eureka: false
+#eureka.client.fetch-registry: false
 eureka:
   server:
     enable-self-preservation: false  #自我保护，会导致服务不会及时剔除
     eviction-interval-timer-in-ms: 4000 #清理间隔
-  instance:
-    hostname: 106.13.37.124
+#  instance:
+#    hostname: 192.168.100.183
+eureka.client.register-with-eureka: false
+eureka.client.fetch-registry: false
 
+eureka.enable-self-preservation: false  #自我保护，会导致服务不会及时剔除
+eureka.eviction-interval-timer-in-ms: 4000 #清理间隔
+---
+server:
+  port: 9000
+spring:
+  profiles: peer1
+  application:
+    name: peer1
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:9001/eureka/,http://peer3:9002/eureka/
+
+---
+server:
+  port: 9001
+spring:
+  profiles: peer2
+  application:
+    name: peer2
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:9000/eureka/,http://peer3:9002/eureka/
+
+---
+server:
+  port: 9002
+spring:
+  profiles: peer3
+  application:
+    name: peer3
+eureka:
+  instance:
+    hostname: peer3
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:9001/eureka/,http://peer2:9000/eureka/
