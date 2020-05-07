@@ -1,8 +1,8 @@
-#logging:
-#  file: ${user.dir}/logs/eureka.log
-#  level:
-#    org.springframework:
-#      data: DEBUG
+logging:
+  file: ${user.dir}/logs/eureka.log
+  level:
+    org.springframework:
+      data: DEBUG
 #      security: DEBUG
 #spring:
 #  security:
@@ -16,51 +16,47 @@ eureka:
   server:
     enable-self-preservation: false  #自我保护，会导致服务不会及时剔除
     eviction-interval-timer-in-ms: 4000 #清理间隔
-#  instance:
-#    hostname: 192.168.100.183
 eureka.client.register-with-eureka: false
 eureka.client.fetch-registry: false
 
-eureka.enable-self-preservation: false  #自我保护，会导致服务不会及时剔除
-eureka.eviction-interval-timer-in-ms: 4000 #清理间隔
 ---
 server:
-  port: 9000
+  port: 8001
 spring:
   profiles: peer1
   application:
-    name: peer1
+    name: eureka_server
 eureka:
   instance:
-    hostname: localhost
+    hostname: 127.0.0.1
   client:
     serviceUrl:
-      defaultZone: http://peer2:9001/eureka/,http://peer3:9002/eureka/
+      defaultZone: http://127.0.0.1:8002/eureka/,http://127.0.0.1:8003/eureka/
 
 ---
 server:
-  port: 9001
+  port: 8002
 spring:
   profiles: peer2
   application:
-    name: peer2
+    name: eureka_server
 eureka:
   instance:
-    hostname: peer2
+    hostname: 127.0.0.1
   client:
     serviceUrl:
-      defaultZone: http://peer1:9000/eureka/,http://peer3:9002/eureka/
+      defaultZone: http://127.0.0.1:8001/eureka/,http://127.0.0.1:8003/eureka/
 
 ---
 server:
-  port: 9002
+  port: 8003
 spring:
   profiles: peer3
   application:
-    name: peer3
+    name: eureka_server
 eureka:
   instance:
-    hostname: peer3
+    hostname: 127.0.0.1
   client:
     serviceUrl:
-      defaultZone: http://peer1:9001/eureka/,http://peer2:9000/eureka/
+      defaultZone: http://127.0.0.1:8001/eureka/,http://127.0.0.1:8002/eureka/

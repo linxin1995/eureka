@@ -1,4 +1,4 @@
-package com.superbee.eureka;
+package com.superb.eureka;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
