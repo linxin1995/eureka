@@ -9,6 +9,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 public class EurekaApplication {
 
     public static void main(String[] args) {
+        //MDC.put("mainReqId", UUID.randomUUID().toString().substring(0,8));
         SpringApplication.run(EurekaApplication.class, args);
     }
 
