@@ -2,8 +2,7 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{env}@%X{serverStartTime} [%-5level] %X{mainReqId}
-                [%X{httpType}-%X{httpMethod}] %logger{36} %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{env}@%X{serverStartTime} [%-5level] %X{mainReqId} [%X{httpType}-%X{httpMethod}] %logger{36} %msg%n
             </pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -17,8 +16,7 @@
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{env}@%X{serverStartTime} [%-5level] %X{reqId}
-                [%X{httpType}-%X{httpMethod}] %logger{36} %msg%n
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{env}@%X{serverStartTime} [%-5level] %X{reqId} [%X{httpType}-%X{httpMethod}] %logger{36} %msg%n
             </pattern>
         </encoder>
     </appender>
